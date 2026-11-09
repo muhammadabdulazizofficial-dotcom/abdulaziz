@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Muhammad Abdul Aziz</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #312e81, #164e63);
+            color: white;
+            min-height: 100vh;
+            padding: 25px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 35px 10px;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        header p {
+            color: #cbd5e1;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        p {
+            line-height: 1.7;
+        }
+
+        button {
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            padding: 13px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 18px;
+        }
+
+        button:hover {
+            background: #6d28d9;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .profile-item {
+            background: rgba(255,255,255,0.08);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+
+        .profile-item span {
+            display: block;
+            color: #67e8f9;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 15px;
+            margin-top: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #cbd5e1;
+            font-size: 13px;
+        }
+
+        @media(max-width: 500px) {
+            header h1 {
+                font-size: 25px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>👋 Halo, Salam Kenal!</h1>
+        <p>Selamat datang di website profil pribadi saya.</p>
+    </header>
+
+    <!-- HALAMAN AWAL -->
+    <section class="card" id="home">
+        <h2>Selamat Datang!</h2>
+
+        <p>
+            Halo semuanya! Perkenalkan, nama saya
+            <b>Muhammad Abdul Aziz</b>.
+            Terima kasih sudah mengunjungi website pribadi saya.
+            Yuk, kenali saya lebih dekat!
+        </p>
+
+        <button onclick="berkenalan()">
+            Ayo Berkenalan
+        </button>
+    </section>
+
+    <!-- PROFIL -->
+    <section class="card hidden" id="profil">
+        <h2>✨ Tentang Saya</h2>
+
+        <div class="profile-item">
+            <span>Nama Lengkap</span>
+            <b>Muhammad Abdul Aziz</b>
+        </div>
+
+        <div class="profile-item">
+            <span>Sekolah / Kampus</span>
+            <b>Politeknik Indonusa Surakarta</b>
+        </div>
+
+        <div class="profile-item">
+            <span>Program Studi</span>
+            <b>Teknologi Rekayasa Perangkat Lunak</b>
+        </div>
+
+        <div class="profile-item">
+            <span>Alamat</span>
+            <b>Jatisumo, Sambungmacan, Sragen</b>
+        </div>
+
+        <div class="profile-item">
+            <span>Hobi</span>
+            <b>Bermain Bola Voli 🏐</b>
+        </div>
+
+        <button onclick="lihatVideo()">
+            Lihat Video Saya 🎬
+        </button>
+
+        <button onclick="kembali()">
+            Kembali
+        </button>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="card hidden" id="video">
+        <h2>🎬 Video Saya</h2>
+
+        <p>
+            Berikut adalah video yang ingin saya bagikan.
+            Selamat menonton!
+        </p>
+
+        <video controls>
+            <source src="1000770090.mp4" type="video/mp4">
+            Browser kamu tidak mendukung video.
+        </video>
+
+        <button onclick="kembaliProfil()">
+            Kembali ke Profil
+        </button>
+    </section>
+
+    <!-- FORM PENGUNJUNG -->
+    <section class="card">
+        <h2>💬 Ayo Berkenalan Juga!</h2>
+
+        <p>Isi identitas singkat kamu di bawah ini.</p>
+
+        <input type="text" id="nama"
+            placeholder="Masukkan nama kamu">
+
+        <input type="text" id="asal"
+            placeholder="Asal sekolah / kampus">
+
+        <input type="text" id="hobi"
+            placeholder="Hobi kamu">
+
+        <button onclick="kirimData()">
+            Kirim Perkenalan
+        </button>
+
+        <p id="hasil" style="margin-top:15px;"></p>
+    </section>
+
+    <footer>
+        © 2026 Muhammad Abdul Aziz
+        <br>
+        Dibuat dengan HTML, CSS, dan JavaScript ❤️
+    </footer>
+
+</div>
+
+<script>
+    function berkenalan() {
+        document.getElementById("home").classList.add("hidden");
+        document.getElementById("profil").classList.remove("hidden");
+    }
+
+    function lihatVideo() {
+        document.getElementById("profil").classList.add("hidden");
+        document.getElementById("video").classList.remove("hidden");
+    }
+
+    function kembali() {
+        document.getElementById("profil").classList.add("hidden");
+        document.getElementById("home").classList.remove("hidden");
+    }
+
+    function kembaliProfil() {
+        document.getElementById("video").classList.add("hidden");
+        document.getElementById("profil").classList.remove("hidden");
+    }
+
+    function kirimData() {
+        let nama = document.getElementById("nama").value.trim();
+        let asal = document.getElementById("asal").value.trim();
+        let hobi = document.getElementById("hobi").value.trim();
+
+        if (nama === "" || asal === "" || hobi === "") {
+            alert("Silakan lengkapi semua data!");
+            return;
+        }
+
+        let hasil = document.getElementById("hasil");
+
+        hasil.innerHTML =
+            "🎉 Halo, " + aman(nama) +
+            "! Senang berkenalan denganmu." +
+            "<br>Asal: " + aman(asal) +
+            "<br>Hobi: " + aman(hobi);
+
+    }
+
+    function aman(teks) {
+        return teks.replace(/[&<>"']/g, function (karakter) {
+            return {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[karakter];
+        });
+    }
+</script>
+
+</body>
+</html>
